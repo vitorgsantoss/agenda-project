@@ -25,6 +25,7 @@ def index(request):
         context,
     )
 
+
 def contact(request, contact_id):
     single_contact = get_object_or_404(
         Contact, pk = contact_id, show = True,
@@ -42,6 +43,7 @@ def contact(request, contact_id):
         'contact/contact.html',
         context,
     )
+
 
 def search(request):
     search_value = request.GET.get('q', '').strip()

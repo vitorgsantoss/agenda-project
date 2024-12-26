@@ -7,22 +7,21 @@ from django import forms
 
 
 class ContactForm(forms.ModelForm):
+    picture = forms.ImageField(
+        widget= forms.FileInput(
+            attrs={
+                'accept': 'image/*'
+            }
+        )
+    )
     class Meta:
         model = Contact
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture',
         )
-    
 
-    # first_name = forms.CharField(
-    #     widget= forms.PasswordInput(
-    #         attrs={
-    #             'placeholder': 'Alterando propriedades de first_name',
-    #         }
-    #     ),
-    #     # label= 'Senha'
-    # )
 
     def clean(self):
         first_name = self.cleaned_data.get('first_name')
