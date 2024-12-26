@@ -1,10 +1,34 @@
-from typing import Any, Mapping
-from django.core.files.base import File
-from django.db.models.base import Model
-from django.forms.utils import ErrorList
 from contact.models import Contact
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from contact.models import User
+from django.core.exceptions import ValidationError
 
+class RegisterForm(UserCreationForm):
+
+    # Fazendo com que os campos abaixo se tornem obrigatórios
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField()
+
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 'last_name', 'email',
+            'username', 'password1', 'password2',
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if User.objects.filter(email=email).exists():
+            self.add_error(
+                'email',
+                ValidationError('Este e-mail já está cadastrado', code='invalid')
+            )
+
+        return email
 
 class ContactForm(forms.ModelForm):
     picture = forms.ImageField(
