@@ -44,17 +44,23 @@ typing_extensions==4.12.2
 
 4. Execute as migrações para configurar o banco de dados:
 
+
    ```bash
    python manage.py migrate
    ```
 
-5. Inicie o servidor de desenvolvimento:
+5. Criar contatos fictícios:
+   ```bash
+   python utils/data_faker.py
+   ```
+
+7. Inicie o servidor de desenvolvimento:
 
    ```bash
    python manage.py runserver
    ```
 
-6. Acesse a aplicação no navegador:
+8. Acesse a aplicação no navegador:
 
    ```
    http://127.0.0.1:8000
