@@ -38,6 +38,7 @@ Faker==33.1.0
 pillow==11.0.0
 python-dateutil==2.9.0.post0
 six==1.17.0
+sqlparse==0.5.3
 typing_extensions==4.12.2
 ```
 

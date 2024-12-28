@@ -33,6 +33,7 @@ def create(request):
     context = {
         'form': ContactForm(),
         'form_action': form_action,
+        'form_title': 'Create Contact'
     }
 
     return render(
@@ -55,6 +56,7 @@ def update(request, contact_id):
         context = {
             'form': form,
             'form_action': form_action,
+            'form_title': 'Update Contact'
         }
 
         if form.is_valid():
@@ -70,6 +72,7 @@ def update(request, contact_id):
     context = {
         'form': ContactForm(instance=contact),
         'form_action': form_action,
+        'form_title': 'Update Contact'
     }
 
     return render(
